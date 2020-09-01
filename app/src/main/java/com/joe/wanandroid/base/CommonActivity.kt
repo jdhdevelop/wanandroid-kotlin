@@ -7,6 +7,8 @@ abstract class CommonActivity: BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
+        initView()
+        initData(savedInstanceState)
     }
 
     abstract fun getLayoutId(): Int
