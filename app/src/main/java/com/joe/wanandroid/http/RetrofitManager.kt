@@ -15,6 +15,7 @@ object RetrofitManager {
 
     val apiService: Apis = Retrofit.Builder()
         .baseUrl(BASE_URL)
+        .client(genericOkClient())
         .addConverterFactory(GsonConverterFactory.create())
         .build().create(Apis::class.java)
 
