@@ -7,7 +7,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface Apis {
+interface HomeService {
 
     /**
      * 首页数据
@@ -16,6 +16,6 @@ interface Apis {
     fun getHomeList(@Path("page") page:Int):MutableList<HomeListResponse>
 
     @GET("/banner/json")
-    fun getBannerData(): Call<MutableList<BannerData>>
+    fun getBannerData(): Call<BaseResponse<MutableList<BannerData>>>
 
 }

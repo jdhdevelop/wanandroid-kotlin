@@ -1,4 +1,4 @@
-package com.joe.wanandroid.ui.app
+package com.joe.wanandroid.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -8,16 +8,26 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-object RetrofitManager {
+object ServiceCreator {
 
-    private val logger = kLogger<RetrofitManager>()
+    private val logger = kLogger<ServiceCreator>()
     private var BASE_URL = "https://www.wanandroid.com"
 
-    val apiService: Apis = Retrofit.Builder()
+    private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .client(genericOkClient())
         .addConverterFactory(GsonConverterFactory.create())
-        .build().create(Apis::class.java)
+        .build()
+
+    fun <T> create(serviceClass: Class<T>): T = retrofit.create(serviceClass)
+    //TODO:这句还没看懂
+    inline fun <reified T> create(): T = create(T::class.java)
+
+//    val apiService: HomeService = Retrofit.Builder()
+//        .baseUrl(BASE_URL)
+//        .client(genericOkClient())
+//        .addConverterFactory(GsonConverterFactory.create())
+//        .build().create(HomeService::class.java)
 
     private fun genericOkClient(): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor(
