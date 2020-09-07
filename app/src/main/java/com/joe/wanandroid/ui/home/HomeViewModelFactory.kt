@@ -5,6 +5,6 @@ import androidx.lifecycle.ViewModelProvider
 
 class HomeViewModelFactory(private val countReserved: Int) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return HomeViewModel(countReserved) as T
+        return HomeViewModel() as T
     }
 }
