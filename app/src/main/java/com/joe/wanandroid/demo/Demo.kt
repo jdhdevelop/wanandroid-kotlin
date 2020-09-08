@@ -1,7 +1,19 @@
 package com.joe.wanandroid.demo
 
 fun main() {
-    for (i in 1..100000) {
-        println("current is $i")
+    Person().printName()
+
+}
+
+class Person {
+    private val name by lazy {
+        "Joe"
     }
+
+    fun printName() {
+        println(name)
+    }
+
+
+
 }

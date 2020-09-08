@@ -2,6 +2,8 @@ package com.joe.wanandroid.ui.home
 
 import android.util.Log
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.joe.wanandroid.base.BaseApplication
 import com.joe.wanandroid.model.BannerData
 import com.youth.banner.adapter.BannerImageAdapter
@@ -18,6 +20,7 @@ class BannerAdapter(bannerList: MutableList<BannerData>): BannerImageAdapter<Ban
             Log.d("joe","进入glide ${data?.imagePath}")
             Glide.with(holder.itemView)
                 .load(data?.imagePath)
+                .apply(RequestOptions.bitmapTransform(RoundedCorners(30)))
                 .into(it)
         }
     }
