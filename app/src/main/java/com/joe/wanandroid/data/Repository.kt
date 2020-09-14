@@ -26,6 +26,23 @@ object Repository {
         }
     }
 
+    fun getHomeList(page: Int) = fire(Dispatchers.IO) {
+        coroutineScope {
+            val homeList = async { WanAndroidNetWork.getHome(page) }
+            val homeListResponse = homeList.await()
+            if (homeListResponse.errorCode == 0) {
+                Result.success(homeListResponse.data)
+            }else {
+                Result.failure(RuntimeException(
+                    "bannerResponse message is ${homeListResponse.errorMsg}"
+                ))
+            }
+        }
+    }
+
+
+
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData<Result<T>>(context) {
             val result = try {

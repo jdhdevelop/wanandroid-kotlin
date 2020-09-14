@@ -5,12 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.joe.wanandroid.data.Repository
+import com.joe.wanandroid.model.HomeListResponse
 import com.joe.wanandroid.model.HomeResponse
 
 class HomeViewModel: ViewModel() {
 
 
     private val refreshBanner = MutableLiveData<Any?>()
+
+    private val HomeList = MutableLiveData<MutableList<HomeListResponse>>()
 
     val bannerLiveData = Transformations.switchMap(refreshBanner) {
         Repository.getBanner()
@@ -20,4 +23,6 @@ class HomeViewModel: ViewModel() {
     fun refreshBanner() {
         refreshBanner.value = refreshBanner.value
     }
+
+
 }

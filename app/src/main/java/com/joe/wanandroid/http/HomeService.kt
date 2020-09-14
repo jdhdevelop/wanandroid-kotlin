@@ -13,9 +13,12 @@ interface HomeService {
     /**
      * 首页数据
      */
-//    @GET("/article/list/{page}/json")
-//    fun getHomeList(@Path("page") page:Int):Call<BaseResponse<MutableList<HomeResponse>>>
+    @GET("/article/list/{page}/json")
+    fun getHomeList(@Path("page") page:Int):Call<BaseResponse<MutableList<HomeListResponse>>>
 
+    /**
+     * 首页banner
+     */
     @GET("/banner/json")
     fun getBannerData(): Call<BaseResponse<MutableList<BannerData>>>
 

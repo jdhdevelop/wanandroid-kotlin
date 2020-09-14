@@ -13,6 +13,8 @@ object WanAndroidNetWork {
 
     suspend fun getBanner() = homeService.getBannerData().await()
 
+    suspend fun getHome(page: Int) = homeService.getHomeList(page).await()
+
     private suspend fun <T> Call<T>.await():T {
         return suspendCoroutine { continuation ->
             enqueue(object: Callback<T>{

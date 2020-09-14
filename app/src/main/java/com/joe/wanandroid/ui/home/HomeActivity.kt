@@ -31,8 +31,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-    }
+
 
 }
